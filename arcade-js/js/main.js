@@ -6,7 +6,7 @@ let gameLoop;
 let inputHandler;
 
 // Function to initialize the game engine and start the selected game
-function startGame(gameName) {
+export function startGame(gameName) {
   // Clear any existing game objects or game state
   if (currentGame) {
     currentGame.destroy();
@@ -39,4 +39,20 @@ function startGame(gameName) {
 // Event listener for when the window has loaded
 window.addEventListener("load", () => {
   // Set up initial game state, UI listeners, etc. as needed
+  setupButtonListeners();
 });
+
+function setupButtonListeners() {
+  let pongButton = document.getElementById("pong");
+  let breakoutButton = document.getElementById("breakout");
+
+  pongButton.addEventListener("click", () => {
+    startGame("pong");
+  });
+
+  breakoutButton.addEventListener("click", () => {
+    startGame("breakout");
+  });
+
+  // Add event listeners for more game buttons as needed
+}
