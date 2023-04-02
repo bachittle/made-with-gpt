@@ -9,18 +9,21 @@ export const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Set up the game objects, initialized to empty object
-let gameObjects = {};
+export let gameObjects = {};
 
 // Set up the input handler
 const inputHandler = new InputHandler();
 
 // Set up the current game status
 let currentGame;
+export function setCurrentGame(game) {
+  currentGame = game;
+}
 
 const MAX_BOUNCE_ANGLE = Math.PI / 3; // 60 degrees
 
 // Initialize the game
-function initGame() {
+export function initGame() {
   // Clear gameObjects
   gameObjects = {};
 

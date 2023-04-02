@@ -104,3 +104,5 @@ function drawText(ctx, text, x, y) {
   ctx.fillStyle = '#0095DD';
   ctx.fillText(text, x, y);
 }
+
+export default handleBreakoutLogic;

@@ -42,6 +42,14 @@ export class Ball {
   isOutOfBound() {
     return this.y - this.radius < 0 || this.y + this.radius > canvas.height;
   }
+
+  // reset
+  reset() {
+    this.x = canvas.width / 2;
+    this.y = canvas.height / 2;
+    this.dx = this.speed;
+    this.dy = -this.speed;
+  }
 }
 
 // Paddle class

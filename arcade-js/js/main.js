@@ -1,58 +1,46 @@
-// implement main.js, which will implement the startGame functions and start the game loop
+// implement main.js, which will implement the event listeners to press the buttons to switch the game between pong and breakout
+
 // main.js
 
-let currentGame;
-let gameLoop;
-let inputHandler;
+import { initGame, canvas, gameObjects, setCurrentGame } from './game_engine/game_loop.js';
+import handlePongLogic from './game_specific_scripts/pong.js';
+import handleBreakoutLogic from './game_specific_scripts/breakout.js';
 
-// Function to initialize the game engine and start the selected game
-export function startGame(gameName) {
-  // Clear any existing game objects or game state
-  if (currentGame) {
-    currentGame.destroy();
-    currentGame = null;
-  }
-
-  // Set up the game engine, input handler, and game-specific objects/logic
-  switch (gameName) {
-    case "pong":
-      currentGame = new Pong();
-      break;
-    case "breakout":
-      currentGame = new Breakout();
-      break;
-    // Add more cases as necessary for additional games
-    default:
-      console.error(`Invalid game name provided: ${gameName}`);
-      return;
-  }
-
-  inputHandler = new InputHandler(currentGame);
-
-  // Start the game loop
-  if (!gameLoop) {
-    gameLoop = new GameLoop();
-  }
-  gameLoop.start(currentGame.update, currentGame.draw);
-}
-
-// Event listener for when the window has loaded
-window.addEventListener("load", () => {
-  // Set up initial game state, UI listeners, etc. as needed
-  setupButtonListeners();
+// Set up event listeners for game-selection buttons
+document.getElementById('pong').addEventListener('click', () => {
+  switchGame('pong');
 });
 
-function setupButtonListeners() {
-  let pongButton = document.getElementById("pong");
-  let breakoutButton = document.getElementById("breakout");
+document.getElementById('breakout').addEventListener('click', () => {
+  switchGame('breakout');
+});
 
-  pongButton.addEventListener("click", () => {
-    startGame("pong");
-  });
+// Switch the game to the selected game
+function switchGame(selectedGame) {
+  if (selectedGame === 'pong') {
+    // Clear previous game's logic and switch to Pong
+    gameObjects.ball.reset();
+    canvas.removeEventListener('click', handleBreakoutLogic);
+    canvas.addEventListener('click', handlePongLogic);
+  } else if (selectedGame === 'breakout') {
+    // Clear previous game's logic and switch to Breakout
+    gameObjects.ball.reset();
+    canvas.removeEventListener('click', handlePongLogic);
+    canvas.addEventListener('click', handleBreakoutLogic);
+  }
 
-  breakoutButton.addEventListener("click", () => {
-    startGame("breakout");
-  });
-
-  // Add event listeners for more game buttons as needed
+  // Update the game state in game_loop.js
+  updateGameState(selectedGame);
 }
+
+// Function to update the game state in game_loop.js
+function updateGameState(selectedGame) {
+  // Update the game state
+  setCurrentGame(selectedGame);
+
+  // Reset the game objects
+  initGame();
+}
+
+// Initialize the game with the first game
+initGame();

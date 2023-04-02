@@ -38,4 +38,7 @@
 # filegpt -f index.html css/main.css docs/issues/fix_canvas.md -m gpt-4 >> docs/issues/fix_canvas.md
 
 # event handlers on buttons
-filegpt -f index.html js/main.js -m gpt-4 >> js/main.js
+# filegpt -f index.html js/main.js -m gpt-4 >> js/main.js
+
+# retry main.js from scratch using other files for context
+filegpt -f docs/*.md index.html js/game_engine/*.js js/game_specific_scripts/*.js js/main.js -m gpt-4 >> js/main.js
