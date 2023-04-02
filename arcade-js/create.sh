@@ -32,4 +32,7 @@
 # filegpt -f docs/*.md index.html js/main.js -m gpt-4 >> js/main.js
 
 # fix bounce angle
-filegpt -f js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js
+# filegpt -f js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js
+
+# fix canvas issue
+filegpt -f index.html css/main.css docs/issues/fix_canvas.md -m gpt-4 >> docs/issues/fix_canvas.md
