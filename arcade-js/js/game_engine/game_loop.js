@@ -28,7 +28,7 @@ export function initGame() {
   gameObjects = {};
 
   // Set the current game
-  currentGame = 'pong'; // Can be changed to breakout for testing
+  // currentGame = 'pong'; // Can be changed to breakout for testing
 
   // Load the assets and initialize game objects for the selected game
   if (currentGame === 'pong') {
@@ -138,4 +138,4 @@ function handleBreakoutLogic() {
 }
 
 // Initialize the game
-initGame();
+// initGame();

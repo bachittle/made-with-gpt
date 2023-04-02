@@ -19,12 +19,12 @@ document.getElementById('breakout').addEventListener('click', () => {
 function switchGame(selectedGame) {
   if (selectedGame === 'pong') {
     // Clear previous game's logic and switch to Pong
-    gameObjects.ball.reset();
+    if (gameObjects.ball) gameObjects.ball.reset();
     canvas.removeEventListener('click', handleBreakoutLogic);
     canvas.addEventListener('click', handlePongLogic);
   } else if (selectedGame === 'breakout') {
     // Clear previous game's logic and switch to Breakout
-    gameObjects.ball.reset();
+    if (gameObjects.ball) gameObjects.ball.reset();
     canvas.removeEventListener('click', handlePongLogic);
     canvas.addEventListener('click', handleBreakoutLogic);
   }
@@ -43,4 +43,4 @@ function updateGameState(selectedGame) {
 }
 
 // Initialize the game with the first game
-initGame();
+// initGame();
