@@ -11,4 +11,7 @@
 # filegpt -f docs/create.md js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js
 
 # begin writing game objects
-filegpt -f docs/create.md js/game_engine/game_loop.js js/game_engine/game_objects.js -m gpt-4 >> js/game_engine/game_objects.js
+# filegpt -f docs/create.md js/game_engine/game_loop.js js/game_engine/game_objects.js -m gpt-4 >> js/game_engine/game_objects.js
+
+# begin writing input handlers
+filegpt -f docs/create.md js/game_engine/game_loop.js js/game_engine/game_objects.js js/game_engine/input_handler.js -m gpt-4 >> js/game_engine/input_handler.js
