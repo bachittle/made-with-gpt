@@ -5,4 +5,7 @@
 # filegpt -f create.md touch.sh -m gpt-4 >> touch.sh
 
 # write steps
-filegpt -f docs/create.md docs/steps.md -m gpt-4 >> docs/steps.md
+# filegpt -f docs/create.md docs/steps.md -m gpt-4 >> docs/steps.md
+
+# begin writing game loop
+filegpt -f docs/create.md js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js
