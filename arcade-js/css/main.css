@@ -1,0 +1,51 @@
+/* main.css */
+
+/* Basic styling for the entire page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    padding: 20px;
+    font-size: 24px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-container {
+    width: 640px;
+    height: 480px;
+    border: 2px solid #fff;
+    position: relative;
+}
+
+#game-selection {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #444;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Add any custom game-specific classes or styles here, or in their respective game-specific_styles folder */

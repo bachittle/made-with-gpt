@@ -18,7 +18,7 @@
     </header>
     <main>
         <section id="game-container">
-            <!-- The game canvas or DOM elements will be inserted here -->
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
         </section>
         <section id="game-selection">
             <h2>Select a Game:</h2>
@@ -31,12 +31,12 @@
         <p>Developed by Your Name</p>
     </footer>
 
-    <script src="js/game_engine/game_loop.js"></script>
-    <script src="js/game_engine/game_objects.js"></script>
-    <script src="js/game_engine/input_handler.js"></script>
-    <script src="js/game_specific_scripts/pong.js"></script>
-    <script src="js/game_specific_scripts/breakout.js"></script>
+    <script src="js/game_engine/game_loop.js" type="module"></script>
+    <script src="js/game_engine/game_objects.js" type="module"></script>
+    <script src="js/game_engine/input_handler.js" type="module"></script>
+    <script src="js/game_specific_scripts/pong.js" type="module"></script>
+    <script src="js/game_specific_scripts/breakout.js" type="module"></script>
     <!-- Add more game-specific scripts as needed -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>

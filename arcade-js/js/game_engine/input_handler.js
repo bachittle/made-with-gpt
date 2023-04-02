@@ -69,3 +69,5 @@ class InputHandler {
     this.start = false;
   }
 }
+
+export default InputHandler;

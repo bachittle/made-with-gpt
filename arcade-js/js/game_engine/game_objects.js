@@ -3,8 +3,10 @@
 
 // game_objects.js
 
+import { canvas } from "./game_loop.js";
+
 // Ball class
-class Ball {
+export class Ball {
   constructor() {
     this.x = canvas.width / 2;
     this.y = canvas.height / 2;
@@ -43,7 +45,7 @@ class Ball {
 }
 
 // Paddle class
-class Paddle {
+export class Paddle {
   constructor(isPlayer = false) {
     this.width = 100;
     this.height = 20;
@@ -114,3 +116,5 @@ class Bricks {
     }
   }
 }
+
+export default Ball;

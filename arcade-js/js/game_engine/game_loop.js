@@ -1,8 +1,11 @@
 // create game_loop.js: a basic game loop that will handle the game logic
 // game_loop.js
 
+import InputHandler from './input_handler.js';
+import { Ball, Paddle } from './game_objects.js';
+
 // Set up the canvas and context for the game loop
-const canvas = document.getElementById('gameCanvas');
+export const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Set up the game objects, initialized to empty object
@@ -53,6 +56,39 @@ function gameLoop() {
     handleBreakoutLogic();
   }
 }
+
+// Handle paddle-ball collision
+export function handlePaddleBallCollision(paddle, ball) {
+  const paddleTop = paddle.y;
+  const paddleBottom = paddle.y + paddle.height;
+  const paddleLeft = paddle.x;
+  const paddleRight = paddle.x + paddle.width;
+  const ballTop = ball.y - ball.radius;
+  const ballBottom = ball.y + ball.radius;
+  const ballLeft = ball.x - ball.radius;
+  const ballRight = ball.x + ball.radius;
+
+  if (
+    ballBottom >= paddleTop &&
+    ballTop <= paddleBottom &&
+    ballRight >= paddleLeft &&
+    ballLeft <= paddleRight
+  ) {
+    // Calculate the angle of the bounce based on where the ball impacts the paddle
+    const collidePoint = ball.x - (paddle.x + paddle.width / 2);
+
+    // Normalize the collide point to a number between -1 and 1
+    const normalizedCollidePoint = collidePoint / (paddle.width / 2);
+
+    // Calculate the bounce angle in radians
+    const bounceAngle = normalizedCollidePoint * MAX_BOUNCE_ANGLE;
+
+    // Update the ball's velocity based on the bounce angle
+    ball.dy = -1 * ball.speed * Math.sin(bounceAngle);
+    ball.dx = ball.speed * Math.cos(bounceAngle);
+  }
+}
+
 
 // Handle Pong game logic
 function handlePongLogic() {

@@ -23,4 +23,10 @@
 # filegpt -f docs/*.md js/game_engine/*.js js/game_specific_scripts/pong.js -m gpt-4 >> js/game_specific_scripts/pong.js
 
 # implement breakout.js
-filegpt -f docs/*.md js/game_engine/*.js js/game_specific_scripts/breakout.js -m gpt-4 >> js/game_specific_scripts/breakout.js
+# filegpt -f docs/*.md js/game_engine/*.js js/game_specific_scripts/breakout.js -m gpt-4 >> js/game_specific_scripts/breakout.js
+
+# implement css
+# filegpt -f docs/*.md index.html css/main.css -m gpt-4 >> css/main.css
+
+# implement main.js
+filegpt -f docs/*.md index.html js/main.js -m gpt-4 >> js/main.js
