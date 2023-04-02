@@ -1,27 +1,42 @@
 <!-- Help me start a stub index.html for loading this application based on the documentation provided -->
 
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arcade Cabinet</title>
     <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <div id="play-area">
-      <canvas id="game-canvas"></canvas>
-      <div id="game-over"></div>
-      <div id="game-controls">
-        <button id="start-button">Start</button>
-        <button id="pause-button">Pause</button>
-        <button id="switch-button">Switch Game</button>
-      </div>
-    </div>
-    <script src="js/game_engine/game_objects.js"></script>
+    <!-- Include game-specific CSS files as needed -->
+    <!--<link rel="stylesheet" href="css/game_specific_styles/pong.css">-->
+    <!--<link rel="stylesheet" href="css/game_specific_styles/breakout.css">-->
+</head>
+<body>
+    <header>
+        <h1>Arcade Cabinet</h1>
+    </header>
+    <main>
+        <section id="game-container">
+            <!-- The game canvas or DOM elements will be inserted here -->
+        </section>
+        <section id="game-selection">
+            <h2>Select a Game:</h2>
+            <button id="pong" onclick="startGame('pong')">Pong</button>
+            <button id="breakout" onclick="startGame('breakout')">Breakout</button>
+            <!-- Add more game buttons as needed -->
+        </section>
+    </main>
+    <footer>
+        <p>Developed by Your Name</p>
+    </footer>
+
     <script src="js/game_engine/game_loop.js"></script>
+    <script src="js/game_engine/game_objects.js"></script>
     <script src="js/game_engine/input_handler.js"></script>
     <script src="js/game_specific_scripts/pong.js"></script>
     <script src="js/game_specific_scripts/breakout.js"></script>
+    <!-- Add more game-specific scripts as needed -->
     <script src="js/main.js"></script>
-  </body>
+</body>
 </html>

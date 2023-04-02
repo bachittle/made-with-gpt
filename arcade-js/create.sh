@@ -17,4 +17,10 @@
 # filegpt -f docs/create.md js/game_engine/game_loop.js js/game_engine/game_objects.js js/game_engine/input_handler.js -m gpt-4 >> js/game_engine/input_handler.js
 
 # write index.html stub
-filegpt -f docs/create.md docs/steps.md index.html >> index.html
+# filegpt -f docs/create.md docs/steps.md index.html -m gpt-4 >> index.html
+
+# implement pong.js
+# filegpt -f docs/*.md js/game_engine/*.js js/game_specific_scripts/pong.js -m gpt-4 >> js/game_specific_scripts/pong.js
+
+# implement breakout.js
+filegpt -f docs/*.md js/game_engine/*.js js/game_specific_scripts/breakout.js -m gpt-4 >> js/game_specific_scripts/breakout.js
