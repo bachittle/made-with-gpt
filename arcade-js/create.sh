@@ -8,4 +8,7 @@
 # filegpt -f docs/create.md docs/steps.md -m gpt-4 >> docs/steps.md
 
 # begin writing game loop
-filegpt -f docs/create.md js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js
+# filegpt -f docs/create.md js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js
+
+# begin writing game objects
+filegpt -f docs/create.md js/game_engine/game_loop.js js/game_engine/game_objects.js -m gpt-4 >> js/game_engine/game_objects.js
