@@ -29,4 +29,7 @@
 # filegpt -f docs/*.md index.html css/main.css -m gpt-4 >> css/main.css
 
 # implement main.js
-filegpt -f docs/*.md index.html js/main.js -m gpt-4 >> js/main.js
+# filegpt -f docs/*.md index.html js/main.js -m gpt-4 >> js/main.js
+
+# fix bounce angle
+filegpt -f js/game_engine/game_loop.js -m gpt-4 >> js/game_engine/game_loop.js

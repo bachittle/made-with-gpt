@@ -17,6 +17,8 @@ const inputHandler = new InputHandler();
 // Set up the current game status
 let currentGame;
 
+const MAX_BOUNCE_ANGLE = Math.PI / 3; // 60 degrees
+
 // Initialize the game
 function initGame() {
   // Clear gameObjects
