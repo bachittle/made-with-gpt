@@ -1,8 +1,10 @@
 // begin implementing pong.js
 // pong.js
 
+import { gameObjects, inputHandler, handlePaddleBallCollision, ctx } from "../game_engine/game_loop.js";
+
 // Define the Pong game-specific logic
-function handlePongLogic() {
+export function handlePongLogic() {
   // Update game objects
   gameObjects.ball.update();
   gameObjects.playerPaddle.update(inputHandler);

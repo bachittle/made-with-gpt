@@ -5,6 +5,7 @@ import InputHandler from './input_handler.js';
 import { Ball, Paddle, Bricks } from './game_objects.js';
 
 import { handleBreakoutLogic } from '../game_specific_scripts/breakout.js';
+import { handlePongLogic } from '../game_specific_scripts/pong.js';
 
 // Set up the canvas and context for the game loop
 export const canvas = document.getElementById('gameCanvas');
@@ -96,28 +97,6 @@ export function handlePaddleBallCollision(paddle, ball) {
   }
 }
 
-
-// Handle Pong game logic
-function handlePongLogic() {
-  // Update the game objects
-  gameObjects.ball.update();
-  gameObjects.playerPaddle.update(inputHandler);
-  gameObjects.aiPaddle.update(gameObjects.ball);
-
-  // Check for collisions
-  handlePaddleBallCollision(gameObjects.playerPaddle, gameObjects.ball);
-  handlePaddleBallCollision(gameObjects.aiPaddle, gameObjects.ball);
-
-  // Check for scoring situations
-  if (gameObjects.ball.isOutOfBound()) {
-    // Increment player's or AI's score and reset the ball
-  }
-
-  // Render the game objects
-  gameObjects.ball.render(ctx);
-  gameObjects.playerPaddle.render(ctx);
-  gameObjects.aiPaddle.render(ctx);
-}
 
 // Initialize the game
 // initGame();
