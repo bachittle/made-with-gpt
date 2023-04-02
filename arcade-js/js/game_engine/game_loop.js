@@ -2,17 +2,19 @@
 // game_loop.js
 
 import InputHandler from './input_handler.js';
-import { Ball, Paddle } from './game_objects.js';
+import { Ball, Paddle, Bricks } from './game_objects.js';
+
+import { handleBreakoutLogic } from '../game_specific_scripts/breakout.js';
 
 // Set up the canvas and context for the game loop
 export const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+export const ctx = canvas.getContext('2d');
 
 // Set up the game objects, initialized to empty object
 export let gameObjects = {};
 
 // Set up the input handler
-const inputHandler = new InputHandler();
+export const inputHandler = new InputHandler();
 
 // Set up the current game status
 let currentGame;
@@ -40,7 +42,7 @@ export function initGame() {
   } else if (currentGame === 'breakout') {
     gameObjects = {
       ball: new Ball(),
-      paddle: new Paddle(),
+      paddle: new Paddle(true),
       bricks: new Bricks()
     };
   }
@@ -115,26 +117,6 @@ function handlePongLogic() {
   gameObjects.ball.render(ctx);
   gameObjects.playerPaddle.render(ctx);
   gameObjects.aiPaddle.render(ctx);
-}
-
-// Handle Breakout game logic
-function handleBreakoutLogic() {
-  // Update the game objects
-  gameObjects.ball.update();
-  gameObjects.paddle.update(inputHandler);
-  gameObjects.bricks.update();
-
-  // Check for collisions
-  handlePaddleBallCollision(gameObjects.paddle, gameObjects.ball);
-  handleBrickBallCollision(gameObjects.bricks, gameObjects.ball);
-
-  // Check for level completion or game over situations
-  // ...
-
-  // Render the game objects
-  gameObjects.ball.render(ctx);
-  gameObjects.paddle.render(ctx);
-  gameObjects.bricks.render(ctx);
 }
 
 // Initialize the game

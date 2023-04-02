@@ -1,13 +1,15 @@
 // begin implementing breakout.js
 // breakout.js
 
+import { gameObjects, inputHandler, handlePaddleBallCollision, ctx, canvas } from "../game_engine/game_loop.js";
+
 // Define the Breakout-specific logic and variables
 let lives = 3;
 let score = 0;
 let level = 1;
 
 // Handle Breakout-specific logic
-function handleBreakoutLogic() {
+export function handleBreakoutLogic() {
   // Update the game objects
   gameObjects.ball.update();
   gameObjects.paddle.update(inputHandler);
@@ -59,7 +61,7 @@ function handleBreakoutLogic() {
 }
 
 // Handle brick-ball collision in Breakout
-function handleBrickBallCollision(bricks, ball) {
+export function handleBrickBallCollision(bricks, ball) {
   for (let i = 0; i < bricks.rows; i++) {
     for (let j = 0; j < bricks.columns; j++) {
       let brick = bricks.bricksArray[i][j];

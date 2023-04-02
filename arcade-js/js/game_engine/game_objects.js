@@ -80,7 +80,7 @@ export class Paddle {
 }
 
 // Bricks class
-class Bricks {
+export class Bricks {
   constructor() {
     this.rows = 4;
     this.columns = 10;
