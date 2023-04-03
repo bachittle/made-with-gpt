@@ -27,4 +27,10 @@
 # filegpt -f index.html css/main.css docs/issues/004.md -m gpt-4 >> docs/issues/004.md
 
 # get more features to implement for breakout
-filegpt -f docs/games/breakout.md -m gpt-4 >> docs/games/breakout.md
+# filegpt -f docs/games/breakout.md -m gpt-4 >> docs/games/breakout.md
+
+# add keyboard controls to breakout
+# filegpt -f docs/*.md games/breakout.js -m gpt-4 >> games/breakout.js
+
+# fix keydown not moving properly
+filegpt -f games/breakout.js -m gpt-4 >> games/breakout.js

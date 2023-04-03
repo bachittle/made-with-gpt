@@ -9,6 +9,11 @@ class BreakoutGame {
     this.paddle = new Paddle(canvas.width / 2, canvas.height - 10, 80, 10);
     this.isGameOver = false;
     this.loop = null;
+
+    this.handleKeydown = this.handleKeydown.bind(this);
+    this.handleKeyup = this.handleKeyup.bind(this);
+    window.addEventListener("keydown", this.handleKeydown);
+    window.addEventListener("keyup", this.handleKeyup);
   }
 
   start() {
@@ -21,7 +26,9 @@ class BreakoutGame {
 
   update() {
     this.ball.update(this.canvas);
-    // TODO: Add paddle update and collision detection between ball, paddle, and bricks.
+    this.paddle.update(this.canvas);
+
+    // TODO: Add collision detection between ball, paddle, and bricks.
 
     if (this.isGameOver) {
       clearInterval(this.loop);
@@ -32,6 +39,22 @@ class BreakoutGame {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ball.draw(this.ctx);
     this.paddle.draw(this.ctx);
+  }
+
+  handleKeydown(event) {
+    if (event.key === "ArrowLeft") {
+      this.paddle.movingLeft = true;
+    } else if (event.key === "ArrowRight") {
+      this.paddle.movingRight = true;
+    }
+  }
+
+  handleKeyup(event) {
+    if (event.key === "ArrowLeft") {
+      this.paddle.movingLeft = false;
+    } else if (event.key === "ArrowRight") {
+      this.paddle.movingRight = false;
+    }
   }
 }
 
@@ -74,6 +97,32 @@ class Paddle {
     this.y = y;
     this.width = width;
     this.height = height;
+    this.speed = 5;
+    this.movingLeft = false;
+    this.movingRight = false;
+  }
+
+  moveLeft() {
+    this.x -= this.speed;
+  }
+
+  moveRight() {
+    this.x += this.speed;
+  }
+
+  update(canvas) {
+    if (this.movingLeft) {
+      this.moveLeft();
+    }
+    if (this.movingRight) {
+      this.moveRight();
+    }
+
+    if (this.x < 0) {
+      this.x = 0;
+    } else if (this.x + this.width > canvas.width) {
+      this.x = canvas.width - this.width;
+    }
   }
 
   draw(ctx) {

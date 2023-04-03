@@ -151,3 +151,9 @@ what other fixes and features should be added to this breakout clone?
 10. Responsive design: Make the game fully responsive, adapting to different devices and screen sizes.
 
 11. Customization options: Allow users to customize the game elements, such as ball and paddle colors, brick patterns, or background image.
+
+
+---
+
+
+rewrite this code and add the ability to use the arrow keys to move the paddle left and right.

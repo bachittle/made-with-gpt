@@ -26,7 +26,6 @@ These games should provide a diverse selection for your arcade cabinet while mai
 
 Define a hierarchal folder structure that would be good for this project. Use markdown bullet lists (dashes) for the hierarchy.
 Make the code structure only include breakout.js for now, but add the ability to add other games later.
-each js file will not include imports from other modules: they will be their own isolated games that interact with a canvas.
 
 ```
 - arcade_cabinet
