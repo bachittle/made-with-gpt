@@ -9,6 +9,7 @@ class BreakoutGame {
     this.paddle = new Paddle(canvas.width / 2, canvas.height - 10, 80, 10);
     this.bricks = this.createBricks(5, 7);
     this.isGameOver = false;
+    this.score = 0;
     this.loop = null;
 
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -58,6 +59,7 @@ class BreakoutGame {
     this.ball.draw(this.ctx);
     this.paddle.draw(this.ctx);
     this.drawBricks(this.ctx);
+    this.drawScore(this.ctx);
   }
 
   handleKeydown(event) {
@@ -92,6 +94,7 @@ class BreakoutGame {
         if (brick.visible && this.ballCollidesWithBrick(brick)) {
           brick.visible = false;
           this.ball.vy = -this.ball.vy;
+          this.score++;
         }
       }
     }
@@ -112,6 +115,11 @@ class BreakoutGame {
         this.bricks[row][col].draw(ctx);
       }
     }
+  }
+
+  drawScore(ctx) {
+    ctx.font = "20px Arial";
+    ctx.fillText(`Score: ${this.score}`, 8, 20);
   }
 }
 
