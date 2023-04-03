@@ -58,7 +58,7 @@ each js file will not include imports from other modules: they will be their own
 
 In this folder structure, the assets folder will contain any fonts and sounds that the games might need. The css folder will have the main stylesheet for the entire project. The games folder will hold all the individual game files including breakout.js and the others you plan to add later. The js folder will have the main.js file responsible for loading and managing the games, as well as a game_framework.js file which will have common utilities and functions that will be useful across different games. Finally, there will be an index.html file which serves as the main entry point for the project.
 
-To make it easy to add games later, you can create a simple JSON configuration file in the js folder, like "games_config.json", that contains the metadata for each game.
+To make it easy to add games later, you can create a simple variable that stores the available games.
 
 ```json
 [
@@ -73,7 +73,7 @@ To make it easy to add games later, you can create a simple JSON configuration f
 ]
 ```
 
-In the main.js file, you can write code to load the list of games from the JSON file and dynamically create menu items for each game in the index.html file. When a user selects a game from the menu, main.js would load the corresponding JS file, create a new instance of the game class, and start the game loop.
+In the main.js file, you can write code to load the list of games from the variable and dynamically create menu items for each game in the index.html file. When a user selects a game from the menu, main.js would load the corresponding JS file, create a new instance of the game class, and start the game loop.
 
 Remember to include the following structure in your index.html:
 ```html
@@ -97,4 +97,26 @@ Remember to include the following structure in your index.html:
 </html>
 ```
 
-This way, it will be easy to add new games in the future. Just add their .js files to the games folder, and include their metadata in the games_config.json file.
+This way, it will be easy to add new games in the future. Just add their .js files to the games folder, and include their metadata in the games_config variable.
+
+Does this design have any code smells? How can they be fixed?
+
+This design is generally good and modular, making it easy to extend and maintain. However, there are a few potential areas for improvement:
+
+1. Currently, the games_config.json file contains the list of available games, and their metadata is used to generate menu items for each game. This may lead to performance issues when loading the main menu, as the main.js file has to fetch the JSON file and parse it before generating the menu. A possible solution for this is to include the game list directly in the main.js file as an array or object, which would eliminate the need to fetch and parse the JSON file.
+
+I will use a variable instead
+
+2. All the game files are stored in the same folder, which can make it difficult to manage as the number of games grows. To keep things organized, it is a good idea to create a folder for each game within the games folder, and place the respective game's files (such as JS, images, sounds, etc.) in their corresponding folder.
+
+I will keep games in their own file for now, as I don't need images and sounds for most of these games.
+
+3. The game framework file (game_framework.js) may become hard to maintain if it grows too large with lots of utility functions and classes. To combat this issue, you can also create separate utility files within the js folder, like collision_detection.js or input_manager.js, and only include the necessary files in each game file. This would help in making the project more modular and easier to maintain.
+
+I'll cross that bridge when I come to it.
+
+4. Loading each game file individually may lead to increased load times, especially if there are a lot of games in the list. One potential solution for this is to concatenate and minify all the game files into a single bundled file, which would then be loaded by main.js. This will improve loading times and overall performance of your arcade cabinet project.
+
+Understood, will consider this for the future.
+
+By addressing these potential code smells, you can ensure that your project is easier to maintain, extend, and optimize.
