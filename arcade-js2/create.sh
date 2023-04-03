@@ -32,5 +32,5 @@
 # add keyboard controls to breakout
 # filegpt -f docs/*.md games/breakout.js -m gpt-4 >> games/breakout.js
 
-# fix keydown not moving properly
+# perform upgrades on breakout.js
 filegpt -f games/breakout.js -m gpt-4 >> games/breakout.js

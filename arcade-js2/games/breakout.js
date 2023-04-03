@@ -7,6 +7,7 @@ class BreakoutGame {
     this.ctx = canvas.getContext("2d");
     this.ball = new Ball(50, 50, 5);
     this.paddle = new Paddle(canvas.width / 2, canvas.height - 10, 80, 10);
+    this.bricks = this.createBricks(5, 7);
     this.isGameOver = false;
     this.loop = null;
 
@@ -24,11 +25,28 @@ class BreakoutGame {
     }, 1000 / 60);
   }
 
+  createBricks(rows, cols) {
+    let bricks = [];
+    for (let row = 0; row < rows; row++) {
+      bricks[row] = [];
+      for (let col = 0; col < cols; col++) {
+        const brickX = col * (80 + 10) + 40;
+        const brickY = row * (20 + 10) + 60;
+        bricks[row][col] = new Brick(brickX, brickY, 80, 20, true);
+      }
+    }
+    return bricks;
+  }
+
   update() {
     this.ball.update(this.canvas);
     this.paddle.update(this.canvas);
 
-    // TODO: Add collision detection between ball, paddle, and bricks.
+    if (this.ballCollidesWithPaddle()) {
+      this.ball.vy = -Math.abs(this.ball.vy);
+    }
+
+    this.checkBrickCollisions();
 
     if (this.isGameOver) {
       clearInterval(this.loop);
@@ -39,6 +57,7 @@ class BreakoutGame {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ball.draw(this.ctx);
     this.paddle.draw(this.ctx);
+    this.drawBricks(this.ctx);
   }
 
   handleKeydown(event) {
@@ -56,6 +75,44 @@ class BreakoutGame {
       this.paddle.movingRight = false;
     }
   }
+
+  ballCollidesWithPaddle() {
+    return (
+      this.ball.x + this.ball.radius > this.paddle.x &&
+      this.ball.x - this.ball.radius < this.paddle.x + this.paddle.width &&
+      this.ball.y + this.ball.radius > this.paddle.y &&
+      this.ball.y - this.ball.radius < this.paddle.y + this.paddle.height
+    );
+  }
+
+  checkBrickCollisions() {
+    for (let row = 0; row < this.bricks.length; row++) {
+      for (let col = 0; col < this.bricks[row].length; col++) {
+        const brick = this.bricks[row][col];
+        if (brick.visible && this.ballCollidesWithBrick(brick)) {
+          brick.visible = false;
+          this.ball.vy = -this.ball.vy;
+        }
+      }
+    }
+  }
+
+  ballCollidesWithBrick(brick) {
+    return (
+      this.ball.x + this.ball.radius > brick.x &&
+      this.ball.x - this.ball.radius < brick.x + brick.width &&
+      this.ball.y + this.ball.radius > brick.y &&
+      this.ball.y - this.ball.radius < brick.y + brick.height
+    );
+  }
+
+  drawBricks(ctx) {
+    for (let row = 0; row < this.bricks.length; row++) {
+      for (let col = 0; col < this.bricks[row].length; col++) {
+        this.bricks[row][col].draw(ctx);
+      }
+    }
+  }
 }
 
 // Ball class
@@ -64,8 +121,8 @@ class Ball {
     this.x = x;
     this.y = y;
     this.radius = radius;
-    this.vx = 2;
-    this.vy = 2;
+    this.vx = 4;
+    this.vy = 4;
   }
 
   update(canvas) {
@@ -131,6 +188,27 @@ class Paddle {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
+  }
+}
+
+// Brick class
+class Brick {
+  constructor(x, y, width, height, visible) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.visible = visible;
+  }
+
+  draw(ctx) {
+    if (this.visible) {
+      ctx.beginPath();
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.fillStyle = "black";
+      ctx.fill();
+      ctx.closePath();
+    }
   }
 }
 
