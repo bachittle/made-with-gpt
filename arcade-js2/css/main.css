@@ -1,1 +1,41 @@
-/* main.css */
+/* generate a main.css file */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+#gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#gameCanvas {
+    border: 1px solid #fff;
+    background-color: #000;
+}
+
+#gameMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 24px;
+}
+
+#gameMenu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#gameMenu li {
+    margin: 10px;
+    cursor: pointer;
+}
