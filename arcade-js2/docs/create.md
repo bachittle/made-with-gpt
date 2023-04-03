@@ -103,20 +103,13 @@ Does this design have any code smells? How can they be fixed?
 
 This design is generally good and modular, making it easy to extend and maintain. However, there are a few potential areas for improvement:
 
-1. Currently, the games_config.json file contains the list of available games, and their metadata is used to generate menu items for each game. This may lead to performance issues when loading the main menu, as the main.js file has to fetch the JSON file and parse it before generating the menu. A possible solution for this is to include the game list directly in the main.js file as an array or object, which would eliminate the need to fetch and parse the JSON file.
-
-I will use a variable instead
-
 2. All the game files are stored in the same folder, which can make it difficult to manage as the number of games grows. To keep things organized, it is a good idea to create a folder for each game within the games folder, and place the respective game's files (such as JS, images, sounds, etc.) in their corresponding folder.
-
-I will keep games in their own file for now, as I don't need images and sounds for most of these games.
+(I will keep games in their own file for now, as I don't need images and sounds for most of these games. )
 
 3. The game framework file (game_framework.js) may become hard to maintain if it grows too large with lots of utility functions and classes. To combat this issue, you can also create separate utility files within the js folder, like collision_detection.js or input_manager.js, and only include the necessary files in each game file. This would help in making the project more modular and easier to maintain.
-
-I'll cross that bridge when I come to it.
+(I'll cross that bridge when I come to it.)
 
 4. Loading each game file individually may lead to increased load times, especially if there are a lot of games in the list. One potential solution for this is to concatenate and minify all the game files into a single bundled file, which would then be loaded by main.js. This will improve loading times and overall performance of your arcade cabinet project.
-
-Understood, will consider this for the future.
+(Understood, will consider this for the future.)
 
 By addressing these potential code smells, you can ensure that your project is easier to maintain, extend, and optimize.

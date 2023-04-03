@@ -15,4 +15,16 @@
 
 # fix div issue
 # filegpt -f index.html css/main.css js/main.js docs/issues/001.md -m gpt-4 >> docs/issues/001.md
-filegpt -f index.html css/main.css js/main.js docs/issues/002.md -m gpt-4 >> docs/issues/002.md
+# filegpt -f index.html css/main.css js/main.js docs/issues/002.md -m gpt-4 >> docs/issues/002.md
+
+# implement breakout
+# filegpt -f index.html js/main.js docs/*.md games/breakout.js -m gpt-4 >> games/breakout.js
+
+# fix canvas stretching issue
+# filegpt -f index.html css/main.css js/main.js games/breakout.js docs/issues/003.md -m gpt-4 >> docs/issues/003.md
+
+# remove scroll bars
+# filegpt -f index.html css/main.css docs/issues/004.md -m gpt-4 >> docs/issues/004.md
+
+# get more features to implement for breakout
+filegpt -f docs/games/breakout.md -m gpt-4 >> docs/games/breakout.md

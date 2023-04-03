@@ -7,7 +7,7 @@
 const gamesConfig = [
     {
         name: "Breakout",
-        file: "games/breakout.js"
+        file: "../games/breakout.js",
     }
 ];
 
@@ -30,8 +30,16 @@ function gameMenuItemClicked(gameFilePath) {
 }
 
 // The loadGame function dynamically loads the selected game file and starts the game.
-function loadGame(gameFilePath) {
-    // TODO: Implement this function.
+async function loadGame(gameFilePath) {
+    const gameModule = await import(gameFilePath);
+    const gameClass = gameModule.default;
+    const canvas = document.getElementById("gameCanvas");
+
+    canvas.width = 800;
+    canvas.height = 600;
+
+    const game = new gameClass(canvas);
+    game.start();
 }
 
 // Call the generateMenu function to populate the menu with games.
