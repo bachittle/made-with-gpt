@@ -1,5 +1,3 @@
-// based on the structure for breakout.js, start writing a pong.js clone in javascript.
-
 // pong.js
 
 import Ball from "./shared/ball.js";
@@ -18,8 +16,8 @@ class PongGame {
     this.loop = null;
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
-    window.addEventListener("keydown", this.handleKeydown);
-    window.addEventListener("keyup", this.handleKeyup);
+    document.addEventListener("keydown", this.handleKeydown);
+    document.addEventListener("keyup", this.handleKeyup);
   }
 
   start() {
@@ -107,5 +105,4 @@ class PongGame {
 // Export the PongGame class
 export default PongGame;
 
-// the arrow keys do not move the paddles
-// rewrite the code and fix the issue
+// rewrite the code and ...

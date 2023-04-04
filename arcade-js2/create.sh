@@ -59,4 +59,7 @@
 # filegpt -f games/pong.js docs/games/pong.md -m gpt-4 >> docs/games/pong.md
 
 # add features to pong
-filegpt -f games/pong.js -m gpt-4 >> games/pong.js
+# filegpt -f games/pong.js -m gpt-4 >> games/pong.js
+
+# fix paddles not moving
+filegpt -f games/shared/*.js games/pong.js docs/issues/007.md -m gpt-4 >> docs/issues/007.md
