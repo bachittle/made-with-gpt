@@ -1,13 +1,16 @@
-// implement main.js
-// start implementing step 2
+// main.js
 
-// Step 2: Implement basic game selection.
+// Implement basic game selection with Pong added to the list of games.
 
 // Define the list of available games.
 const gamesConfig = [
     {
         name: "Breakout",
         file: "../games/breakout.js",
+    },
+    {
+        name: "Pong",
+        file: "../games/pong.js",
     }
 ];
 

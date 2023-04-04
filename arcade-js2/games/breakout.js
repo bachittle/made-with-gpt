@@ -2,6 +2,9 @@
 
 // breakout.js
 
+import Ball from "./shared/ball.js";
+import Paddle from "./shared/paddle.js";
+
 // Game class
 class BreakoutGame {
   constructor(canvas) {
@@ -229,89 +232,6 @@ class BreakoutGame {
 
   multiBall() {
     // TODO: Implement multi-ball functionality
-  }
-}
-
-// Ball class
-class Ball {
-  constructor(x, y, radius) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.vx = 4;
-    this.vy = 4;
-  }
-
-  update(canvas) {
-    this.x += this.vx;
-    this.y += this.vy;
-
-    if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-      this.vx = -this.vx;
-    }
-
-    if (this.y - this.radius < 0) {
-      this.vy = -this.vy;
-    }
-  }
-
-  draw(ctx) {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
-  }
-
-  reset(x, y) {
-    this.x = x;
-    this.y = y;
-    this.vx = 4;
-    this.vy = 4;
-  }
-}
-
-// Paddle class
-class Paddle {
-  constructor(x, y, width, height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.speed = 5;
-    this.movingLeft = false;
-    this.movingRight = false;
-  }
-
-  moveLeft() {
-    this.x -= this.speed;
-  }
-
-  moveRight() {
-    this.x += this.speed;
-  }
-
-  update(canvas) {
-    if (this.movingLeft) {
-      this.moveLeft();
-    }
-    if (this.movingRight) {
-      this.moveRight();
-    }
-
-    if (this.x < 0) {
-      this.x = 0;
-    } else if (this.x + this.width > canvas.width) {
-      this.x = canvas.width - this.width;
-    }
-  }
-
-  draw(ctx) {
-    ctx.beginPath();
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
   }
 }
 
