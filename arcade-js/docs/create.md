@@ -8,11 +8,12 @@ Come up with some more arcade games for this cabinet. Invent your own as well as
 
 Classic games:
 1. space_invaders.js - a Space Invaders clone
-2. pacman.js - a Pac-Man clone
-3. asteroids.js - an Asteroids clone
-4. snake.js - a Snake clone
-5. tetris.js - a Tetris clone
-6. frogger.js - a Frogger clone
+2. qix.js - a qix clone (does it know this game?)
+3. pacman.js - a Pac-Man clone
+4. asteroids.js - an Asteroids clone
+5. snake.js - a Snake clone
+6. tetris.js - a Tetris clone
+7. frogger.js - a Frogger clone
 
 Original games:
 1. reaction_racer.js - a simple racing game where players must quickly steer the car to avoid obstacles 

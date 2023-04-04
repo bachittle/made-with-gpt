@@ -15,6 +15,10 @@ const gamesConfig = [
     {
         name: "SpaceInvaders",
         file: "../games/space_invaders.js",
+    },
+    {
+        name: "Qix",
+        file: "../games/qix.js",
     }
 ];
 
