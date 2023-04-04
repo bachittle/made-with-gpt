@@ -11,6 +11,10 @@ const gamesConfig = [
     {
         name: "Pong",
         file: "../games/pong.js",
+    },
+    {
+        name: "SpaceInvaders",
+        file: "../games/space_invaders.js",
     }
 ];
 
