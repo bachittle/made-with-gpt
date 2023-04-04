@@ -33,10 +33,10 @@
 # filegpt -f docs/*.md games/breakout.js -m gpt-4 >> games/breakout.js
 
 # perform upgrades on breakout.js
-# filegpt -f games/breakout.js -m gpt-4 >> games/breakout.js
+filegpt -f games/breakout.js -m gpt-4 >> games/breakout.js
 
 # get some power up ideas 
 # filegpt -f docs/games/breakout.md -m gpt-4 >> docs/games/breakout.md
 
 # fix bug it created
-filegpt -f games/breakout.js docs/issues/005.md -m gpt-4 >> docs/issues/005.md
+# filegpt -f games/breakout.js docs/issues/005.md -m gpt-4 >> docs/issues/005.md

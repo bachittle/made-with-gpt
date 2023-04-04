@@ -1,12 +1,4 @@
-// rewrite the code and random colored bricks that give a power-up. Implement the following power-ups: 
-// 1a. wider paddle, blue 
-// 1b. narrower paddle, blue 
-// 2a. faster ball, red
-// 2b. slower ball, red
-// 3. extra life, green 
-// 4. multi-ball, yellow
-// make the colored powerups appear randomly, and most of the time the bricks are just normal bricks (black)
-// show text that tells the user what powerup they got
+// rewrite the code and replace the alerts with text that is drawn to the canvas
 
 // breakout.js
 
@@ -41,6 +33,8 @@ class BreakoutGame {
     this.handleKeyup = this.handleKeyup.bind(this);
     window.addEventListener("keydown", this.handleKeydown);
     window.addEventListener("keyup", this.handleKeyup);
+    this.powerUpText = "";
+    this.powerUpTextTimer = 0;
   }
 
   start() {
@@ -92,6 +86,10 @@ class BreakoutGame {
       clearInterval(this.loop);
       this.gameOver(this.score === this.totalBricks);
     }
+
+    if (this.powerUpTextTimer > 0) {
+      this.powerUpTextTimer--;
+    }
   }
 
   draw() {
@@ -101,6 +99,7 @@ class BreakoutGame {
     this.drawBricks(this.ctx);
     this.drawScore(this.ctx);
     this.drawLives(this.ctx);
+    this.drawPowerUpText(this.ctx);
   }
 
   handleKeydown(event) {
@@ -172,6 +171,13 @@ class BreakoutGame {
     ctx.fillText(`Lives: ${this.lives}`, this.canvas.width - 82, 20);
   }
 
+  drawPowerUpText(ctx) {
+    if (this.powerUpTextTimer > 0) {
+      ctx.font = "20px Arial";
+      ctx.fillText(this.powerUpText, this.canvas.width / 2 - 100, this.canvas.height / 2);
+    }
+  }
+
   gameOver(isVictory) {
     if (isVictory) {
       alert(`Congratulations! You won with a score of ${this.score}!`);
@@ -182,22 +188,21 @@ class BreakoutGame {
   }
 
   displayPowerUpText(color) {
-    let message = "";
     switch (color) {
       case "blue":
-        message = "Paddle size changed!";
+        this.powerUpText = "Paddle size changed!";
         break;
       case "red":
-        message = "Ball speed changed!";
+        this.powerUpText = "Ball speed changed!";
         break;
       case "green":
-        message = "Extra life!";
+        this.powerUpText = "Extra life!";
         break;
       case "yellow":
-        message = "Multi-ball!";
+        this.powerUpText = "Multi-ball!";
         break;
     }
-    alert(message);
+    this.powerUpTextTimer = 100; // Adjust this value to control how long the text is displayed
   }
 
   widerPaddle() {
