@@ -140,7 +140,7 @@ what other fixes and features should be added to this breakout clone?
 
 - [ ] 5. Multiple levels: Implement multiple levels with different brick layout designs and increasing difficulty.
 
-- [ ] 6. Power-ups: Add power-up items like a wider paddle, slower ball, or multi-ball feature that drop from broken bricks and can be caught by the user's paddle to activate the bonus.
+- [X] 6. Power-ups: Add power-up items like a wider paddle, slower ball, or multi-ball feature that drop from broken bricks and can be caught by the user's paddle to activate the bonus.
 
 - [ ] 7. Sound effects and background music: Add sound effects for ball bounces, brick breaks, and paddle collisions. Include background music for a more engaging gaming experience.
 
@@ -182,5 +182,3 @@ Generate a list of power-ups that I could add.
 13. Time Freeze: Temporarily stops the movement of the ball, giving the player extra time to position the paddle.
 
 14. Double Points: Temporarily doubles the score earned for breaking bricks.
-
-1
