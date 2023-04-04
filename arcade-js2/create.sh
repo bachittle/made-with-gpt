@@ -56,7 +56,7 @@
 # filegpt -f games/breakout.js games/pong.js js/main.js docs/issues/006.md -m gpt-4 >> docs/issues/006.md
 
 # get more features to implement for pong 
-# filegpt -f games/pong.js docs/games/pong.md -m gpt-4 >> docs/games/pong.md
+# filegpt -f games/shared/*.js games/pong.js docs/games/pong.md -m gpt-4 >> docs/games/pong.md
 
 # add features to pong
 # filegpt -f games/pong.js -m gpt-4 >> games/pong.js

@@ -16,7 +16,7 @@ class Ball {
       this.vx = -this.vx;
     }
 
-    if (this.y - this.radius < 0) {
+    if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
       this.vy = -this.vy;
     }
   }
