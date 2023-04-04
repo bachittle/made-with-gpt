@@ -33,17 +33,17 @@ class PongGame {
     this.leftPaddle.update(this.canvas);
     this.rightPaddle.update(this.canvas);
 
-    this.checkBallCollision();
-
-    if (this.ball.x + this.ball.radius <= 0) {
+    if (this.ball.x - this.ball.radius < 0) {
       this.scoreRight++;
       this.ball.reset(this.canvas.width / 2, this.canvas.height / 2);
     }
 
-    if (this.ball.x - this.ball.radius >= this.canvas.width) {
+    if (this.ball.x + this.ball.radius > this.canvas.width) {
       this.scoreLeft++;
       this.ball.reset(this.canvas.width / 2, this.canvas.height / 2);
     }
+
+    this.checkBallCollision();
   }
 
   draw() {
