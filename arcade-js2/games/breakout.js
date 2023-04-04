@@ -10,7 +10,9 @@ class BreakoutGame {
     this.bricks = this.createBricks(5, 7);
     this.isGameOver = false;
     this.score = 0;
+    this.lives = 3;
     this.loop = null;
+    this.totalBricks = 5 * 7;
 
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
@@ -49,8 +51,18 @@ class BreakoutGame {
 
     this.checkBrickCollisions();
 
-    if (this.isGameOver) {
+    if (this.ball.y + this.ball.radius > this.canvas.height) {
+      this.lives--;
+      if (this.lives === 0) {
+        this.isGameOver = true;
+      } else {
+        this.ball.reset(this.canvas.width / 2, this.canvas.height / 2);
+      }
+    }
+
+    if (this.isGameOver || this.score === this.totalBricks) {
       clearInterval(this.loop);
+      this.gameOver(this.score === this.totalBricks);
     }
   }
 
@@ -60,6 +72,7 @@ class BreakoutGame {
     this.paddle.draw(this.ctx);
     this.drawBricks(this.ctx);
     this.drawScore(this.ctx);
+    this.drawLives(this.ctx);
   }
 
   handleKeydown(event) {
@@ -121,6 +134,20 @@ class BreakoutGame {
     ctx.font = "20px Arial";
     ctx.fillText(`Score: ${this.score}`, 8, 20);
   }
+
+  drawLives(ctx) {
+    ctx.font = "20px Arial";
+    ctx.fillText(`Lives: ${this.lives}`, this.canvas.width - 82, 20);
+  }
+
+  gameOver(isVictory) {
+    if (isVictory) {
+      alert(`Congratulations! You won with a score of ${this.score}!`);
+    } else {
+      alert(`Game Over! Your final score is ${this.score}.`);
+    }
+    document.location.reload();
+  }
 }
 
 // Ball class
@@ -141,7 +168,7 @@ class Ball {
       this.vx = -this.vx;
     }
 
-    if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+    if (this.y - this.radius < 0) {
       this.vy = -this.vy;
     }
   }
@@ -152,6 +179,13 @@ class Ball {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
+  }
+
+  reset(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = 4;
+    this.vy = 4;
   }
 }
 

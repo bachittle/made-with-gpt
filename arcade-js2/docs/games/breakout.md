@@ -136,7 +136,7 @@ what other fixes and features should be added to this breakout clone?
 
 - [X] 3. Scoring: Add scoring functionality to the game, so that users get points for each brick they break, and display the current score on the canvas.
 
-- [ ] 4. Game over and victory conditions: Add conditions for game over (e.g., if the ball falls below the paddle) and victory (e.g., if all the bricks are broken) with corresponding messages displayed on the canvas.
+- [X] 4. Game over and victory conditions: Add conditions for game over (e.g., if the ball falls below the paddle) and victory (e.g., if all the bricks are broken) with corresponding messages displayed on the canvas.
 
 - [ ] 5. Multiple levels: Implement multiple levels with different brick layout designs and increasing difficulty.
 
