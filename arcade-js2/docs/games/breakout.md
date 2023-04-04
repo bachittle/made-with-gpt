@@ -152,3 +152,35 @@ what other fixes and features should be added to this breakout clone?
 
 - [ ] 11. Customization options: Allow users to customize the game elements, such as ball and paddle colors, brick patterns, or background image.
 
+
+Generate a list of power-ups that I could add.
+
+* 1. Wider Paddle: Temporarily increases the width of the paddle, making it easier to catch the ball.
+
+* 2. Smaller Paddle: Temporarily decreases the width of the paddle, making the game more challenging.
+
+* 3. Slow Ball: Temporarily reduces the speed of the ball, making it easier to catch and control.
+
+* 4. Fast Ball: Temporarily increases the speed of the ball, making the game more challenging.
+
+* 5. Multi-Ball: Generates multiple balls at once, increasing the chances of breaking bricks but also making the game more challenging.
+
+6. Sticky Paddle: Temporarily turns the paddle "sticky," allowing the ball to stick to the paddle and be released on the player's next move.
+
+7. Extra Life: Awards the player with an extra life, allowing them to continue the game even if the ball falls below the paddle.
+
+8. Shield: Adds a temporary shield at the bottom of the screen, preventing the ball from falling below the paddle.
+
+9. Laser Paddle: Temporarily equips the paddle with lasers, allowing the player to shoot down bricks directly.
+
+10. Ghost Ball: Temporarily turns the ball into a ghost ball, allowing it to pass through multiple bricks at once.
+
+11. Heavy Ball: Temporarily makes the ball heavier, allowing it to break multiple bricks in a row or break stronger bricks faster.
+
+12. Magnet: Attracts nearby power-ups to the paddle, making it easier for the player to collect them.
+
+13. Time Freeze: Temporarily stops the movement of the ball, giving the player extra time to position the paddle.
+
+14. Double Points: Temporarily doubles the score earned for breaking bricks.
+
+1

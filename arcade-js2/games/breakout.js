@@ -1,3 +1,13 @@
+// rewrite the code and random colored bricks that give a power-up. Implement the following power-ups: 
+// 1a. wider paddle, blue 
+// 1b. narrower paddle, blue 
+// 2a. faster ball, red
+// 2b. slower ball, red
+// 3. extra life, green 
+// 4. multi-ball, yellow
+// make the colored powerups appear randomly, and most of the time the bricks are just normal bricks (black)
+// show text that tells the user what powerup they got
+
 // breakout.js
 
 // Game class
@@ -7,13 +17,26 @@ class BreakoutGame {
     this.ctx = canvas.getContext("2d");
     this.ball = new Ball(50, 50, 5);
     this.paddle = new Paddle(canvas.width / 2, canvas.height - 10, 80, 10);
+    this.widerPaddle = this.widerPaddle.bind(this);
+    this.narrowerPaddle = this.narrowerPaddle.bind(this);
+    this.fasterBall = this.fasterBall.bind(this);
+    this.slowerBall = this.slowerBall.bind(this);
+    this.extraLife = this.extraLife.bind(this);
+    this.multiBall = this.multiBall.bind(this);
+    this.powerUps = [
+      {color: "blue", action: this.widerPaddle},
+      {color: "blue", action: this.narrowerPaddle},
+      {color: "red", action: this.fasterBall},
+      {color: "red", action: this.slowerBall},
+      {color: "green", action: this.extraLife},
+      {color: "yellow", action: this.multiBall},
+    ];
     this.bricks = this.createBricks(5, 7);
     this.isGameOver = false;
     this.score = 0;
     this.lives = 3;
     this.loop = null;
     this.totalBricks = 5 * 7;
-
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
     window.addEventListener("keydown", this.handleKeydown);
@@ -35,7 +58,12 @@ class BreakoutGame {
       for (let col = 0; col < cols; col++) {
         const brickX = col * (80 + 10) + 40;
         const brickY = row * (20 + 10) + 60;
-        bricks[row][col] = new Brick(brickX, brickY, 80, 20, true);
+        const powerUpChance = Math.random() * 100;
+        let brickPowerUp = null;
+        if (powerUpChance < 20) {
+          brickPowerUp = this.powerUps[Math.floor(Math.random() * this.powerUps.length)];
+        }
+        bricks[row][col] = new Brick(brickX, brickY, 80, 20, true, brickPowerUp);
       }
     }
     return bricks;
@@ -108,6 +136,10 @@ class BreakoutGame {
           brick.visible = false;
           this.ball.vy = -this.ball.vy;
           this.score++;
+          if (brick.powerUp) {
+            brick.powerUp.action();
+            this.displayPowerUpText(brick.powerUp.color);
+          }
         }
       }
     }
@@ -147,6 +179,51 @@ class BreakoutGame {
       alert(`Game Over! Your final score is ${this.score}.`);
     }
     document.location.reload();
+  }
+
+  displayPowerUpText(color) {
+    let message = "";
+    switch (color) {
+      case "blue":
+        message = "Paddle size changed!";
+        break;
+      case "red":
+        message = "Ball speed changed!";
+        break;
+      case "green":
+        message = "Extra life!";
+        break;
+      case "yellow":
+        message = "Multi-ball!";
+        break;
+    }
+    alert(message);
+  }
+
+  widerPaddle() {
+    this.paddle.width *= 1.5;
+  }
+
+  narrowerPaddle() {
+    this.paddle.width *= 0.75;
+  }
+
+  fasterBall() {
+    this.ball.vx *= 1.5;
+    this.ball.vy *= 1.5;
+  }
+
+  slowerBall() {
+    this.ball.vx *= 0.75;
+    this.ball.vy *= 0.75;
+  }
+
+  extraLife() {
+    this.lives++;
+  }
+
+  multiBall() {
+    // TODO: Implement multi-ball functionality
   }
 }
 
@@ -235,19 +312,20 @@ class Paddle {
 
 // Brick class
 class Brick {
-  constructor(x, y, width, height, visible) {
+  constructor(x, y, width, height, visible, powerUp) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
     this.visible = visible;
+    this.powerUp = powerUp;
   }
 
   draw(ctx) {
     if (this.visible) {
       ctx.beginPath();
       ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.fillStyle = "black";
+      ctx.fillStyle = this.powerUp ? this.powerUp.color : "black";
       ctx.fill();
       ctx.closePath();
     }
