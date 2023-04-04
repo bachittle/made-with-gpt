@@ -36,8 +36,13 @@ function gameMenuItemClicked(gameFilePath) {
     loadGame(gameFilePath);
 }
 
+let game;
+
 // The loadGame function dynamically loads the selected game file and starts the game.
 async function loadGame(gameFilePath) {
+    if (game) {
+        game.stop();
+    }
     const gameModule = await import(gameFilePath);
     const gameClass = gameModule.default;
     const canvas = document.getElementById("gameCanvas");
@@ -45,7 +50,7 @@ async function loadGame(gameFilePath) {
     canvas.width = 800;
     canvas.height = 600;
 
-    const game = new gameClass(canvas);
+    game = new gameClass(canvas);
     game.start();
 }
 

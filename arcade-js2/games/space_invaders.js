@@ -33,6 +33,10 @@ class SpaceInvaders {
     }, 1000 / 60);
   }
 
+  stop() {
+    clearInterval(this.loop);
+  }
+
   createInvaders(rows, cols) {
     let invaders = [];
     for (let row = 0; row < rows; row++) {

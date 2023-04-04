@@ -70,8 +70,11 @@
 # filegpt -f index.html js/main.js games/breakout.js games/space_invaders.js -m gpt-4 >> games/space_invaders.js
 
 # implement the shared objects
-filegpt -f games/space_invaders.js games/shared/ship.js -m gpt-4 >> games/shared/ship.js
-sleep 10
-filegpt -f games/space_invaders.js games/shared/invader.js -m gpt-4 >> games/shared/invader.js
-sleep 10
-filegpt -f games/space_invaders.js games/shared/bullet.js -m gpt-4 >> games/shared/bullet.js
+# filegpt -f games/space_invaders.js games/shared/ship.js -m gpt-4 >> games/shared/ship.js
+# sleep 10
+# filegpt -f games/space_invaders.js games/shared/invader.js -m gpt-4 >> games/shared/invader.js
+# sleep 10
+# filegpt -f games/space_invaders.js games/shared/bullet.js -m gpt-4 >> games/shared/bullet.js
+
+# fix bugs
+filegpt -f games/space_invaders.js games/shared/ship.js games/shared/invader.js games/shared/bullet.js docs/issues/008.md -m gpt-4 >> docs/issues/008.md

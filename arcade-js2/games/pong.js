@@ -28,6 +28,10 @@ class PongGame {
     }, 1000 / 60);
   }
 
+  stop() {
+    clearInterval(this.loop);
+  }
+
   update() {
     this.ball.update(this.canvas);
     this.leftPaddle.update(this.canvas);

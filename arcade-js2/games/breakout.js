@@ -48,6 +48,10 @@ class BreakoutGame {
     }, 1000 / 60);
   }
 
+  stop() {
+    clearInterval(this.loop);
+  }
+
   createBricks(rows, cols) {
     let bricks = [];
     for (let row = 0; row < rows; row++) {

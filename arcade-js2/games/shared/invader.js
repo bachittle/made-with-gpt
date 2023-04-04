@@ -12,14 +12,11 @@ class Invader {
 
   update(canvas) {
     this.x += this.moveX;
-    this.y += this.moveY;
 
     // When it hits the wall, it goes down and changes direction
     if (this.x + this.width > canvas.width || this.x < 0) {
       this.moveX = -this.moveX;
-      this.moveY = this.height;
-    } else if (this.y + this.height > canvas.height || this.y < 0) {
-      this.moveY = 0;
+      this.y += this.height;
     }
   }
 
