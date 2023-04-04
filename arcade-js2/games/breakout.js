@@ -256,3 +256,5 @@ class Brick {
 
 // Export the BreakoutGame class
 export default BreakoutGame;
+
+// rewrite the code and ...
