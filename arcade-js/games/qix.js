@@ -1,5 +1,3 @@
-// based on the code structure above, write a javascript clone of the game Qix
-
 // qix.js
 
 import Line from "./shared/line.js";
@@ -14,6 +12,7 @@ class QixGame {
     this.player = new Player(canvas.width / 2, canvas.height - 20);
     this.qix = new Qix(60, 60);
     this.lines = [];
+    this.currentLine = null;
     this.isGameOver = false;
     this.loop = null;
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -38,6 +37,7 @@ class QixGame {
   update() {
     this.player.update(this.canvas);
     this.qix.update(this.canvas);
+    this.updateCurrentLine();
     this.checkCollision();
 
     if (this.isGameOver) {
@@ -55,6 +55,9 @@ class QixGame {
       for (const line of this.lines) {
         line.draw(this.ctx);
       }
+      if (this.currentLine) {
+        this.currentLine.draw(this.ctx);
+      }
     }
   }
 
@@ -67,6 +70,8 @@ class QixGame {
       this.player.movingUp = true;
     } else if (event.key === "ArrowDown") {
       this.player.movingDown = true;
+    } else if (event.key === " ") {
+      this.startCurrentLine();
     }
   }
 
@@ -79,6 +84,33 @@ class QixGame {
       this.player.movingUp = false;
     } else if (event.key === "ArrowDown") {
       this.player.movingDown = false;
+    } else if (event.key === " ") {
+      this.endCurrentLine();
+    }
+  }
+
+  startCurrentLine() {
+    if (!this.currentLine) {
+      this.currentLine = new Line(
+        this.player.x,
+        this.player.y,
+        this.player.x,
+        this.player.y
+      );
+    }
+  }
+
+  endCurrentLine() {
+    if (this.currentLine) {
+      this.lines.push(this.currentLine);
+      this.currentLine = null;
+    }
+  }
+
+  updateCurrentLine() {
+    if (this.currentLine) {
+      this.currentLine.x2 = this.player.x;
+      this.currentLine.y2 = this.player.y;
     }
   }
 
@@ -104,3 +136,5 @@ class QixGame {
 
 // Export the QixGame class
 export default QixGame;
+
+// rewrite the code and ...

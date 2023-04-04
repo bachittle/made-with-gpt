@@ -91,4 +91,7 @@
 # other shared objects were made by default
 
 # get more features to add
-filegpt -f games/qix.js games/shared/qix.js games/shared/line.js games/shared/player.js docs/games/qix.md -m gpt-4 >> docs/games/qix.md
+# filegpt -f games/qix.js games/shared/qix.js games/shared/line.js games/shared/player.js docs/games/qix.md -m gpt-4 >> docs/games/qix.md
+
+# update qix.js
+filegpt -f games/shared/line.js games/shared/player.js games/shared/qix.js games/qix.js -m gpt-4 >> games/qix.js
