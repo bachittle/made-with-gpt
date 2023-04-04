@@ -1,0 +1,42 @@
+<!-- Help me start a stub index.html for loading this application based on the documentation provided -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Cabinet</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Include game-specific CSS files as needed -->
+    <!--<link rel="stylesheet" href="css/game_specific_styles/pong.css">-->
+    <!--<link rel="stylesheet" href="css/game_specific_styles/breakout.css">-->
+</head>
+<body>
+    <header>
+        <h1>Arcade Cabinet</h1>
+    </header>
+    <main>
+        <section id="game-container">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+        </section>
+        <section id="game-selection">
+            <h2>Select a Game:</h2>
+            <button id="pong">Pong</button>
+            <button id="breakout">Breakout</button>
+            <!-- Add more game buttons as needed -->
+        </section>
+    </main>
+    <footer>
+        <p>Developed by Your Name</p>
+    </footer>
+
+    <script src="js/game_engine/game_loop.js" type="module"></script>
+    <script src="js/game_engine/game_objects.js" type="module"></script>
+    <script src="js/game_engine/input_handler.js" type="module"></script>
+    <script src="js/game_specific_scripts/pong.js" type="module"></script>
+    <script src="js/game_specific_scripts/breakout.js" type="module"></script>
+    <!-- Add more game-specific scripts as needed -->
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

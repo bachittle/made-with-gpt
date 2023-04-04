@@ -1,58 +1,58 @@
-/* main.css */
-
-/* Basic styling for the entire page */
+/* generate a main.css file */
 body {
+    font-family: 'Pixelated MS Sans Serif', 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #222;
+    background-color: #2F2E34;
     color: #fff;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+#gameContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-header {
-    padding: 20px;
-    font-size: 24px;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#game-container {
-    width: 640px;
-    height: 480px;
-    border: 2px solid #fff;
-    position: relative;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(180deg, #181818, #2F2E34, #181818);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 30px;
 }
+
 #gameCanvas {
-    max-width: 100%;
-    max-height: 100%;
+    border: 4px solid #4F4B4D;
+    background-color: #FFF;
+    width: 800px;
+    height: 600px;
 }
 
-#game-selection {
-    margin-top: 20px;
+#gameButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
 }
 
-button {
-    background-color: #444;
-    border: 1px solid #fff;
-    color: #fff;
+.button {
     padding: 10px 20px;
+    background-color: #3399FF;
+    border: none;
+    border-radius: 3px;
     font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #222;
     cursor: pointer;
-    margin: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
-button:hover {
-    background-color: #555;
+.button:hover {
+    background-color: #3399FF;
+    color: #fff;
 }
-
-/* Add any custom game-specific classes or styles here, or in their respective game-specific_styles folder */
